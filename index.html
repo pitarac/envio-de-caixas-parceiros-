@@ -40,6 +40,7 @@
 
       var nomeUtm = obterParametroUrl('utm_source');
       if (nomeUtm) {
+        nomeUtm = nomeUtm.replace(/_/g, ' '); // Substituir underscores por espaços
         document.getElementById('nomeVisitante').innerHTML = 'Bem-vindo, ' + nomeUtm + '!';
       }
     </script>
