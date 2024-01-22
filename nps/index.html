@@ -3,25 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parceria de Sucesso - 2024</title>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HDG999XHB"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-0HDG999XHB');
-    </script>
+    <title>Página NPS</title>
 </head>
 <body>
 
-
-
     <!-- Conteúdo visível da página -->
     <header>
-        <p>Bem-vindo à pesquisa, <span id="nomeVisitante">Aguarde... estamos obtendo o seu nome.</span></p>
+        <p>Bem-vindo à Página NPS, <span id="nomeVisitante">Aguarde... estamos obtendo o seu nome.</span></p>
     </header>
     
     <section>
@@ -31,7 +19,20 @@
 
     <!-- Scripts no final do corpo -->
     <script>
-        // ... (código anterior)
+        function obterParametroUrl(nome) {
+            nome = nome.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + nome + "(=([^&#]*)|&|#|$)"),
+                resultados = regex.exec(window.location.href);
+            if (!resultados) return null;
+            if (!resultados[2]) return '';
+            return decodeURIComponent(resultados[2].replace(/\+/g, " "));
+        }
+
+        var nomeUtm = obterParametroUrl('utm_name');
+        if (nomeUtm) {
+            nomeUtm = nomeUtm.replace(/_/g, ' '); // Substituir underscores por espaços
+            document.getElementById('nomeVisitante').innerHTML = 'Bem-vindo, ' + nomeUtm + '!';
+        }
     </script>
 </body>
 </html>
