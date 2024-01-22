@@ -14,10 +14,35 @@
 
         gtag('config', 'G-0HDG999XHB');
     </script>
+
+    
 </head>
 <body>
 
+
+
+    <script>
+  // Função para obter parâmetros da URL
+  function obterParametroUrl(nome) {
+    nome = nome.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + nome + "(=([^&#]*)|&|#|$)"),
+        resultados = regex.exec(window.location.href);
+    if (!resultados) return null;
+    if (!resultados[2]) return '';
+    return decodeURIComponent(resultados[2].replace(/\+/g, " "));
+  }
+
+  // Obtém o valor do parâmetro 'utm_source' da URL
+  var nomeUtm = obterParametroUrl('utm_source');
+
+  // Exibe o nome na página (pode ser adaptado conforme necessário)
+  if (nomeUtm) {
+    document.getElementById('nomeVisitante').innerHTML = 'Bem-vindo, ' + nomeUtm + '!';
+  }
+</script>
+
     <h1>Hello, World!</h1>
+<div id="nomeVisitante"></div>
 
 </body>
 </html>
