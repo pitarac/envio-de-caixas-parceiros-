@@ -1,0 +1,15 @@
+#MolduraIframe {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    #MolduraIframe {
+        height: 500px; /* Defina a altura desejada para telas menores */
+    }
+}
+
+@media (min-width: 601px) {
+    #MolduraIframe {
+        height: 800px; /* Defina a altura desejada para telas maiores */
+    }
+}
