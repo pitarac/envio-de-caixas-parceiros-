@@ -21,34 +21,36 @@
         <p>, <span id="nomeVisitante">Aguarde... estamos obtendo o seu nome.</span></p>
     </header>
     
-    <section>
-        <h1>Veja o que preparamos para 2024</h1>
-        <p>Explore as últimas tendências e novidades em parceria conosco.</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/SEuYQwZr5m0" frameborder="0" allowfullscreen></iframe>
-        <button onclick="redirecionarParaPesquisa()">Responda à nossa pesquisa</button>
-    </section>
+    <!-- Conteúdo visível da página -->
+<section>
+    <h1>Veja o que preparamos para 2024</h1>
+    <p>Explore as últimas tendências e novidades em parceria conosco.</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/SEuYQwZr5m0" frameborder="0" allowfullscreen></iframe>
+    <button onclick="redirecionarParaPesquisa()">Responda à nossa pesquisa</button>
+</section>
 
-    <!-- Scripts no final do corpo -->
-    <script>
-        function obterParametroUrl(nome) {
-            nome = nome.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + nome + "(=([^&#]*)|&|#|$)"),
-                resultados = regex.exec(window.location.href);
-            if (!resultados) return null;
-            if (!resultados[2]) return '';
-            return decodeURIComponent(resultados[2].replace(/\+/g, " "));
-        }
+<!-- Scripts no final do corpo -->
+<script>
+    function obterParametroUrl(nome) {
+        nome = nome.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + nome + "(=([^&#]*)|&|#|$)"),
+            resultados = regex.exec(window.location.href);
+        if (!resultados) return null;
+        if (!resultados[2]) return '';
+        return decodeURIComponent(resultados[2].replace(/\+/g, " "));
+    }
 
-        var nomeUtm = obterParametroUrl('utm_source');
-        if (nomeUtm) {
-            nomeUtm = nomeUtm.replace(/_/g, ' '); // Substituir underscores por espaços
-            document.getElementById('nomeVisitante').innerHTML = 'Bem-vindo, ' + nomeUtm + '!';
-        }
+    var nomeUtm = obterParametroUrl('utm_source');
+    if (nomeUtm) {
+        nomeUtm = nomeUtm.replace(/_/g, ' '); // Substituir underscores por espaços
+        document.getElementById('nomeVisitante').innerHTML = 'Bem-vindo, ' + nomeUtm + '!';
+    }
 
-        function redirecionarParaPesquisa() {
-            // Redirecionar para a página de pesquisa
-            window.location.href = '/nps';
-        }
-    </script>
+    function redirecionarParaPesquisa() {
+        // Adicione os parâmetros UTM ao link da pesquisa
+        var linkPesquisa = 'https://allkitchens.avalon.areapedras.parceiro.tec.br/nps?utm_source=' + encodeURIComponent(obterParametroUrl('utm_source')) + '&utm_name=' + encodeURIComponent(nomeUtm);
+        window.location.href = linkPesquisa;
+    }
+</script>
 </body>
 </html>
