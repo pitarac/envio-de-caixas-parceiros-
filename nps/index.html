@@ -1,30 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-     <link rel="stylesheet" type="text/css" href="../styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página NPS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        section {
+            max-width: 100vw; /* Alterado para ocupar a largura total da viewport */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        h1 {
+            color: #3498db;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh; /* Alterado para ocupar a altura total da viewport */
+            border: none; /* Removido a borda do iframe */
+        }
+    </style>
 </head>
 <body>
 
     <!-- Conteúdo visível da página -->
     <header>
-        <p> <span id="nomeVisitante">Aguarde... estamos obtendo o seu nome.</span></p>
+        <h1> <span id="nomeVisitante">Aguarde... estamos obtendo o seu nome.</span></h1>
     </header>
     
    <section>
-    <h1>Responda à nossa pesquisa</h1>
-   <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLScnRSKZeh_km9X9ZmusjMFByrpTPVjOVvfhud_oiSEQCEGAHA/viewform?embedded=true" 
-    width="100%" 
-    height="100%" <!-- Ajuste aqui -->
-    frameborder="0" 
-    marginheight="0" 
-    marginwidth="0" 
-    style="max-width: 640px; width: 100%;" 
->Loading…</iframe>
-</section>
+        <h1>Responda à nossa pesquisa</h1>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScnRSKZeh_km9X9ZmusjMFByrpTPVjOVvfhud_oiSEQCEGAHA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+   </section>
 
     <!-- Scripts no final do corpo -->
     <script>
